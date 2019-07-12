@@ -1,0 +1,13 @@
+.square {
+  height: 18vw;
+}
+.pointer {
+  cursor: pointer;
+}
+.hidden {
+  display: none;
+  opacity: 0;
+}
+.lh-18 {
+  line-height: 18vw;
+}

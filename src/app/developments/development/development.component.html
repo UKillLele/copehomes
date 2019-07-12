@@ -1,0 +1,112 @@
+<div class="col-lg-10 mx-auto my-5">
+  <a type="button" class="btn btn-lg btn-primary" *ngIf="!details && userIsAuthenticated" [routerLink]="['/developments/' + devId + '/create']">Add Details</a>
+</div>
+<div class="row" *ngIf="details | async as detail">
+  <div class="row" *ngIf="isLoading">
+    <div class="col-lg-10 m-auto">
+      <div class="spinner-border text-primary m-auto" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="userIsAuthenticated && !isLoading">
+  <div class="col-lg-10 mx-auto my-5">
+    <a type="button" class="btn btn-lg btn-primary" [routerLink]="['/developments/edit', detail._id]">Update Details</a>
+  </div>
+</div>
+  <div class="col-lg-12 my-4">
+<!-- carousel with navigation -->
+    <div class="row vh-50">
+      <div class="carousel slide m-auto mw-100" data-ride="carousel" id="devsCarousel">
+        <ol class="carousel-indicators">
+          <li data-target="#devsCarousel" *ngFor="let image of dev.images; let i=index" [attr.data-slide-to]="i" [ngClass]="{'active': i == 0}"></li>
+        </ol>
+        <div class="carousel-inner vh-50 mw-100">
+          <div class="carousel-item h-100 mw-100" *ngFor="let image of dev.images; let i=index" [ngClass]="{'active': i == 0}">
+            <a href="{{image.link}}" target="_blank"><img src="{{image.src}}" alt="" class="image"></a>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#devsCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon shadow" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#devsCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon shadow" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+<!-- title -->
+    <div class="row">
+      <div class="col-lg-10 mx-auto my-4">
+        <div class="text-center jumbotron p-1">
+          <h1 class="h1">{{dev.name}}</h1>
+          <p class="text-muted m-0">{{dev.build}}</p>
+        </div>
+      </div>
+    </div>
+<!-- bottom -->
+    <div class="row">
+      <div class="col-lg-10 mx-auto">
+        <div class="row reverse">
+<!-- left half (description and sales info) -->
+          <div class="col-lg-6">
+            <div class="row mb-3">
+              <div class="col-lg-12">
+                <p>{{dev.description}}</p>
+              </div>
+            </div>
+            <div class="row mb-5">
+              <div class="col-lg-12">
+                <iframe [src]="mapUrl(dev)" width="100%" height="300" class="no-border"></iframe>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="row mb-5 text-center">
+                  <div class="col-lg-12">
+                    <a href="https://aemtexas.com/" class="btn btn-danger btn-lg">Get preapproved for your mortgage</a>
+                  </div>
+                </div>
+                <div class="row">
+<!-- realtor -->
+                  <div class="col-lg-12 mb-5">
+                    <div class="card">
+                      <div class="row no-gutters">
+                        <div class="col-md-4">
+                          <img class="card-image mw-100" src="../../../assets/images/Mark.jpg" alt="">
+                        </div>
+                        <div class="col-md-8">
+                          <div class="card-body">
+                            <h4 class="text-center">Realtor</h4>
+                            <h5 class="card-title">Mark Cope</h5>
+                            <a href="tel:2145925641"><p class="card-text">214.592.5641</p></a>
+                            <a href="mailto:markcope@copedfw.com?subject=feedback"><p class="card-text">MarkCope@CopeDFW.com</p></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <a routerLink="/floorplans/sitebuilt" class="btn btn-xl btn-primary mt-5">< Back</a>
+                    <a routerLink="/floorplans/sitebuilt" class="btn btn-xl btn-primary mt-5 float-right">Find your home ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<!-- right half (plat)-->
+          <div class="col-lg-6 mb-4 d-flex align-items-center">
+            <div [style]="svgStyle(dev)" [innerHTML]="svgHTML(dev)" (click)="display = true;" class=""></div>
+            <img src="{{dev.plat}}" alt="" class="mw-100">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="iframe-container d-flex justify-content-center align-items-center" (click)="display= false;" *ngIf="display">
+  <div id="iframe">
+    <button name="close" (click)="display= false;" class="btn btn-danger iframe-button">x</button>
+    <iframe class="mw-100" name="iframe" scrolling="no" onload="var f = this.contentWindow.document.body.scrollHeight; this.height=f+'px';var g = this.contentWindow.document.body.scrollWidth; this.width=g+'px';"></iframe>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="row" *ngIf="isLoading">
+  <div class="col-lg-10 m-auto">
+    <div class="spinner-border text-primary m-auto" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</div>
+<div class="row" *ngIf="!isLoading">
+  <div class="col-lg-4 col-sm-6 my-5 mx-auto">
+    <form [formGroup]="form" (submit)="onSaveDevelopment()">
+      <div class="card mb-4">
+        <div class="form-group m-0">
+          <h5 class="card-title text-center bg-primary text-light py-2"><input type="text" formControlName="build" placeholder="Build type" class="text-center"></h5>
+        </div>
+        <div class="form-group square text-center" *ngIf="!logoPreview">
+          <div (click)="logoPicker.click()" class="text-primary font-weight-bold h1 pointer m-auto lh-18">+ ADD LOGO</div>
+          <input type="file" #logoPicker (change)="onLogoPicked($event)" class="hidden">
+        </div>
+        <div *ngIf="logoPreview !== '' && logoPreview && form.get('logo').valid">
+          <img [src]="logoPreview" [alt]="form.value.title" class="thumbnail img-thumbnail img-fluid pointer" (click)="logoPicker.click()">
+          <input type="file" #logoPicker (change)="onLogoPicked($event)" class="hidden">
+        </div>
+          <div class="card-body bg-light">
+            <div class="form-group">
+              <h5 class="card-title text-center"><input type="text" formControlName="name" placeholder="Development Name" class="text-center"></h5>
+            </div>
+            <div class="form-group">
+              <p class="card-text"><input type="text" formControlName="location" placeholder="City, State"></p>
+            </div>
+            <div class="form-group">
+              <p class="card-text"><input type="number" formControlName="lots" placeholder="number of lots"></p>
+            </div>
+            <div class="form-group">
+              <p class="card-text">1+ acre homes from $ <input type="number" formControlName="startingPrice" placeholder="starting price"></p>
+            </div>
+          </div>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm text-light w-100 text-center m-0">UPDATE</button>
+    </form>
+  </div>
+</div>

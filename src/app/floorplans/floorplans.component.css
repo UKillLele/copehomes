@@ -1,0 +1,14 @@
+.nav-link:hover {
+  background-color: #007bff5a;
+}
+.tab .nav-link {
+  color: gray;
+  background-color: #007bff2a;
+}
+.tab .active {
+  color: black;
+  background-color: #f8f9fa;
+}
+.tab .active:hover {
+  background-color: #f8f9fa;
+}

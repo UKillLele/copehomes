@@ -1,0 +1,13 @@
+/* all navbar and footer styles not here are bootstrap */
+#navbrand {
+  position: absolute;
+  left: 50%;
+  margin-left: -50px !important;  /* 50% of your logo width */
+  display: block;
+}
+#footer {
+  bottom: 0;
+  width: 100%;
+  z-index: 1050;
+  position: fixed;
+}

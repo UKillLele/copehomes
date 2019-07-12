@@ -1,0 +1,38 @@
+.text-shadow {
+  text-shadow: 0px 0px 5px black;
+}
+.box {
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  margin: auto;
+  border: 10px double gray;
+}
+.cta {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  z-index: 10;
+  text-align: center;
+}
+
+/* images for slider are specified here */
+#img-1 {
+  background-image: url('/assets/images/homes/site-built/Vasquez/Front.jpg');
+}
+#img-2 {
+  background-image: url('/assets/images/homes/site-built/Wilson/Front.jpg');
+}
+#img-3 {
+  background-image: url('/assets/images/homes/site-built/Bishop/Front.jpg');
+}
+.background {
+  min-height: 100%;
+  min-width: 100%;
+  background-size: cover;
+  background-position: center;
+  position: fixed;
+  z-index: 0;
+}

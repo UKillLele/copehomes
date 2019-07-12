@@ -1,0 +1,170 @@
+<!-- site built layout -->
+<div class="row" *ngIf="home$ | async as home">
+  <div class="col-lg-12 my-4">
+<!-- carousel with navigation -->
+    <div class="row vh-50">
+      <div class="carousel slide m-auto" data-ride="carousel" id="homesCarousel">
+        <ol class="carousel-indicators">
+          <li data-target="#homesCarousel" *ngFor="let image of home.images; let i=index" [attr.data-slide-to]="i" [ngClass]="{'active': i == 0}"></li>
+        </ol>
+        <div class="carousel-inner vh-50 mw-100">
+          <div class="carousel-item h-100 mw-100" *ngFor="let image of home.images; let i=index" [ngClass]="{'active': i == 0}">
+            <img src="{{image}}" alt="" class="image">
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#homesCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#homesCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+<!-- title -->
+    <div class="row">
+      <div class="col-lg-10 mx-auto my-4">
+        <div class="text-center jumbotron p-1">
+          <h1 class="h1">{{home.name}}</h1>
+          <p class="text-muted m-0">&copy; {{home.copy}}</p>
+        </div>
+      </div>
+    </div>
+<!-- bottom -->
+    <div class="row">
+      <div class="col-lg-10 mx-auto">
+        <div class="row reverse">
+<!-- left half (description and sales info) -->
+          <div class="col-lg-6">
+            <div class="row mb-5">
+              <div class="col-lg-12 cursor">
+                <p>{{home.description}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="row mb-5 text-center">
+                  <div class="col-lg-12">
+                    <a href="https://aemtexas.com/" class="btn btn-danger btn-lg">Get preapproved for your mortgage</a>
+                  </div>
+                </div>
+                <div class="row">
+<!-- realtor -->
+                  <div class="col-lg-12 mb-5">
+                    <div class="card">
+                      <div class="row no-gutters">
+                        <div class="col-md-4">
+                          <img class="card-image mw-100" src="../../../assets/images/Mark.jpg" alt="">
+                        </div>
+                        <div class="col-md-8">
+                          <div class="card-body">
+                            <h4 class="text-center">Realtor</h4>
+                            <h5 class="card-title">Mark Cope</h5>
+                            <a href="tel:2145925641"><p class="card-text">214.592.5641</p></a>
+                            <a href="mailto:markcope@copedfw.com?subject=feedback"><p class="card-text">MarkCope@CopeDFW.com</p></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <a routerLink="/floorplans/sitebuilt" class="btn btn-xl btn-primary mt-5">< Back</a>
+                    <a routerLink="/developments" class="btn btn-xl btn-primary mt-5 float-right">Find your neighborhood ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<!-- right half (floorplan images)-->
+          <div class="col-lg-6 mb-4">
+            <a href="{{home.floorplan[0]}}" target="iframe" (click)="display=true"><img src="{{home.floorplan[0]}}" alt="" class="mw-100"></a>
+            <a href="{{home.floorplan[0]}}" target="iframe" (click)="display=true"><img src="{{home.floorplan[1]}}" alt="" class="mw-100"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- manufactured layout -->
+<div class="row m-0" *ngIf="manufactured$ | async as home">
+  <div class="col-lg-12 my-4">
+<!-- carousel with navigation -->
+    <div class="row vh-50">
+      <div class="carousel slide m-auto" data-ride="carousel" id="homesCarousel">
+        <ol class="carousel-indicators">
+          <li data-target="#homesCarousel" *ngFor="let image of home.images; let i=index" [attr.data-slide-to]="i" [ngClass]="{'active': i == 0}"></li>
+        </ol>
+        <div class="carousel-inner vh-50 mw-100">
+          <div class="carousel-item h-100 mw-100" *ngFor="let image of home.images; let i=index" [ngClass]="{'active': i == 0}">
+            <img src="{{image}}" alt="" class="image">
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#homesCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#homesCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+<!-- title -->
+    <div class="row">
+      <div class="col-lg-10 mx-auto my-4">
+        <div class="text-center jumbotron p-1">
+          <h1 class="h1">{{home.name}}</h1>
+        </div>
+      </div>
+    </div>
+<!-- bottom -->
+    <div class="row">
+      <div class="col-lg-10 mx-auto">
+        <div class="row reverse">
+<!-- left half (description and sales info) -->
+          <div class="col-lg-6">
+            <div class="row mb-5">
+              <div class="col-lg-12">
+                <p>{{home.description}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="row mb-5 text-center">
+                  <div class="col-lg-12">
+                    <a href="https://aemtexas.com/" class="btn btn-danger btn-lg">Get preapproved for your mortgage</a>
+                  </div>
+                </div>
+                <div class="row">
+<!-- realtor -->
+                  <div class="col-lg-12 mb-5">
+                    <div class="card">
+                      <div class="row no-gutters">
+                        <div class="col-md-4">
+                          <img class="card-image mw-100" src="../../../assets/images/Mark.jpg" alt="">
+                        </div>
+                        <div class="col-md-8">
+                          <div class="card-body">
+                            <h4 class="text-center">Realtor</h4>
+                            <h5 class="card-title">Mark Cope</h5>
+                            <a href="tel:2145925641"><p class="card-text">214.592.5641</p></a>
+                            <a href="mailto:markcope@copedfw.com?subject=feedback"><p class="card-text">MarkCope@CopeDFW.com</p></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <a routerLink="/floorplans/manufactured" class="btn btn-xl btn-primary mt-5">< Back</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<!-- right half (floorplan images)-->
+          <div class="col-lg-6 mb-4">
+            <a href="{{home.floorplan}}" target="iframe" (click)="display=true"><img src="{{home.floorplan}}" alt="" class="mw-100"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

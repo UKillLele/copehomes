@@ -1,0 +1,16 @@
+<div class="row bg-light p-5">
+  <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let home of homes$ | async">
+    <a routerLink="{{home.name}}" class="">
+      <div class="card mb-4">
+        <img src="{{home.front}}" alt="{{home.name}}" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title text-center">{{home.name}}</h5>
+          <p class="card-text">{{home.stories}} story</p>
+          <p class="card-text">{{home.squarefeet}} square feet</p>
+          <p class="card-text">{{home.beds}} beds, {{home.baths}} baths, {{home.garage}} car garage</p>
+          <p class="card-text">{{home.bonus}}</p>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>

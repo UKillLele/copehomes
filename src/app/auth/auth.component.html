@@ -1,0 +1,52 @@
+<div class="row" *ngIf="!userIsAuthenticated">
+  <div class="col-lg-4 my-5 mx-auto">
+    <h1 class="m-auto">Login</h1>
+    <form (submit)="onLogin(loginForm)" #loginForm="ngForm">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="username" name="username" ngModel class="form-control" #usernameInput="ngModel" required autocomplete="username">
+        <p *ngIf="usernameInput.invalid && usernameInput.touched">Username is invalid</p>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" ngModel class="form-control" #passwordInput="ngModel" required autocomplete="password">
+        <p *ngIf="passwordInput.invalid">Password is invalid</p>
+      </div>
+      <button type="submit" class="btn btn-primary" *ngIf="!isLoading">Login</button>
+    </form>
+  </div>
+</div>
+
+<div *ngIf="userIsAdmin">
+  <div class="row">
+    <div class="col-lg-4 my-5 mx-auto">
+      <h1>User List</h1>
+      <ul *ngFor="let user of users" class="list-group list-group-flush">
+        <li class="list-group-item">
+          <div class="d-flex align-items-center">
+            <h4>{{user.username}}</h4>
+            <button class="btn btn-danger btn-sm m-1 ml-auto" (click)="onDelete(user.username)" *ngIf="user.username !=='admin'">DELETE</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="col-lg-4 my-5 mx-auto">
+      <h1 class="m-auto">Enroll a new user</h1>
+      <form (submit)="onSignup(enrollForm)" #enrollForm="ngForm">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="username" name="username" ngModel class="form-control" #usernameInput="ngModel" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" name="password" ngModel class="form-control" #passwordInput="ngModel" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Enroll</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="userIsAuthenticated">
+  add change password functionality
+</div>

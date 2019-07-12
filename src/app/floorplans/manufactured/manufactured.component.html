@@ -1,0 +1,15 @@
+<div class="row bg-light p-5">
+  <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let manufactured of manufactureds$ | async">
+    <a routerLink="{{manufactured.name}}" class="">
+      <div class="card mb-4">
+        <img src="{{manufactured.front}}" alt="{{manufactured.name}}" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title text-center">{{manufactured.name}}</h5>
+          <p class="card-text">{{manufactured.squarefeet}} square feet</p>
+          <p class="card-text">{{manufactured.beds}} beds, {{manufactured.baths}} baths, {{manufactured.living}} living area(s)</p>
+          <p class="card-text">{{manufactured.bonus}}</p>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
